@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-display: 'Outfit', system-ui, sans-serif;
+
+  /* Custom Color Palette for Premium Fintech UI */
+  --color-bg-dark: #06070a;
+  --color-bg-card: rgba(13, 16, 24, 0.7);
+  --color-bg-card-hover: rgba(22, 27, 40, 0.85);
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border-focus: rgba(37, 99, 235, 0.4);
+  
+  --color-neon-green: #10b981;
+  --color-neon-red: #ef4444;
+  --color-neon-blue: #3b82f6;
+  --color-neon-purple: #8b5cf6;
+  
+  --color-chart-green: rgba(16, 185, 129, 0.2);
+  --color-chart-red: rgba(239, 68, 68, 0.2);
+}
+
+/* Base style resets and overrides */
+body {
+  background-color: var(--color-bg-dark);
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(13, 16, 24, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Glassmorphism primitives */
+.glass-panel {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: var(--color-bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7), 0 0 15px -3px rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+}
+
+.glass-input {
+  background: rgba(7, 9, 15, 0.6);
+  border: 1px solid var(--color-border-subtle);
+  color: #f8fafc;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-input:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.glow-effect:hover::before {
+  opacity: 1;
+}
+
+/* Remove default styles from React Router Links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
